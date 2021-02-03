@@ -1,5 +1,7 @@
 package com.codepath.android.booksearch.net;
 
+import android.util.Log;
+
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
@@ -8,10 +10,13 @@ import java.net.URLEncoder;
 
 public class BookClient {
     private static final String API_BASE_URL = "https://openlibrary.org/";
+
     private AsyncHttpClient client;
 
     public BookClient() {
+
         this.client = new AsyncHttpClient();
+        client.setTimeout(20); // Increase default timeout
     }
 
     private String getApiUrl(String relativeUrl) {
